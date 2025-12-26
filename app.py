@@ -14,20 +14,20 @@ import win32con
 import win32gui
 import uiautomation as auto
 
-from bot_engine import BotEngine
-from config import AppConfig
-from help_launcher import _start_docs_server
-from history_store import HistoryStore
-from llm_client import MockLLMClient, OpenAIClient, SiliconFlowClient
-from models import BoundControl
-from settings_store import OpenAISettings, SettingsStore
-from uia_picker import (
+from core.bot_engine import BotEngine
+from storage.config import AppConfig
+from windows.help_launcher import _start_docs_server
+from storage.history_store import HistoryStore
+from core.llm_client import MockLLMClient, OpenAIClient, SiliconFlowClient
+from core.models import BoundControl
+from storage.settings_store import OpenAISettings, SettingsStore
+from uia.uia_picker import (
     HighlightRect,
     build_bound_control,
     control_from_point_safe,
     reacquire,
 )
-from ui_theme import (
+from windows.ui_theme import (
     DARK_TEXT_BG,
     DARK_TEXT_FG,
     DARK_TEXT_INSERT,
@@ -517,7 +517,7 @@ class App:
         try:
             if ctrl.ControlTypeName != expected_type:
                 # 从uia_picker导入find_child_control_by_type函数
-                from uia_picker import find_child_control_by_type
+                from uia.uia_picker import find_child_control_by_type
                 matched_ctrl = find_child_control_by_type(ctrl, expected_type)
                 if not matched_ctrl:
                     self.set_status(

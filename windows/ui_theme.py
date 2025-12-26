@@ -28,7 +28,7 @@ LIGHT_CANVAS_FG = "#555555"
 
 from pathlib import Path
 
-_ASSETS_DIR = Path(__file__).resolve().parent / "docs" / "assets"
+_ASSETS_DIR = Path(__file__).resolve().parent / ".." / "docs" / "assets"
 _APP_ICON = _ASSETS_DIR / "Logo.ico"
 _APP_ICON_PNG = _ASSETS_DIR / "Logo.png"
 _APP_ICON_IMAGE: tk.PhotoImage | None = None

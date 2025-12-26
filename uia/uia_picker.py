@@ -7,7 +7,7 @@ import win32gui
 import win32con
 import uiautomation as auto
 from typing import Optional
-from models import BoundControl
+from core.models import BoundControl
 
 gdiplus = ctypes.WinDLL("gdiplus")
 gdi32 = ctypes.WinDLL("gdi32")

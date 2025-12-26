@@ -6,7 +6,7 @@ import re
 import time
 from typing import List, Dict, Any, Optional
 
-from models import ExtractedMessage
+from core.models import ExtractedMessage
 
 
 _TS_PREFIX_RE = re.compile(r"^\[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2})\]\s*(.*)$")

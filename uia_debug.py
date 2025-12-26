@@ -10,7 +10,7 @@ import uiautomation as auto
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 
-from uia_picker import HighlightRect, control_from_point_safe
+from uia.uia_picker import HighlightRect, control_from_point_safe
 
 
 MAX_NODES = 10000  # 最大节点数 如果显示不全可以改这个

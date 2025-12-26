@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 import socket
 import threading
@@ -30,7 +29,7 @@ def _start_docs_server(docs_dir: Path) -> int:
 
 
 def open_help():
-    docs_dir = Path.cwd() / "docs"
+    docs_dir = Path.cwd() / ".." / "docs"
     index = docs_dir / "index.html"
     if not index.exists():
         raise FileNotFoundError(f"未找到帮助文档：{index}")
@@ -38,7 +37,6 @@ def open_help():
     port = _start_docs_server(docs_dir)
     url = f"http://127.0.0.1:{port}/index.html"
 
-    
     try:
         subprocess.Popen(
             [sys.executable, "-m", "help_viewer", url],
@@ -48,5 +46,4 @@ def open_help():
     except Exception:
         pass
 
-    
     webbrowser.open(url)

@@ -3,8 +3,8 @@ import tkinter as tk
 from tkinter import messagebox
 from pathlib import Path
 
-from config import AppConfig
-from ui_theme import (
+from storage.config import AppConfig
+from windows.ui_theme import (
     DARK_CANVAS_BG,
     DARK_CANVAS_FG,
     FONT_UI,
@@ -15,7 +15,7 @@ from ui_theme import (
     apply_window_icon,
     ttk,
 )
-
+from __version__ import __version__
 
 class InfoWindow(tk.Toplevel):
     def __init__(self, master, cfg: AppConfig):
@@ -107,7 +107,7 @@ class InfoWindow(tk.Toplevel):
         top.grid_columnconfigure(1, weight=1)
 
         self.info1 = tk.StringVar(value="QQSafeChat")
-        self.info2 = tk.StringVar(value="版本 Release-v1.0.0")
+        self.info2 = tk.StringVar(value=f"版本 Release-v{__version__}")
         self.info3 = tk.StringVar(value="★ Github Link")
 
         ttk.Label(right, textvariable=self.info1, font=("Segoe UI", 18, "bold")).pack(

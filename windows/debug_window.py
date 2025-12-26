@@ -4,8 +4,8 @@ import json
 import tkinter as tk
 from typing import Any
 
-from ui_theme import ttk
-from ui_theme import apply_window_icon
+from windows.ui_theme import ttk
+from windows.ui_theme import apply_window_icon
 
 class DebugWindow(tk.Toplevel):
 

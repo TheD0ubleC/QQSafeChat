@@ -2,13 +2,13 @@ from __future__ import annotations
 import tkinter as tk
 from tkinter import font, messagebox, simpledialog
 
-from config import AppConfig
-from persona_store import PersonaStore
-from settings_store import SettingsStore
-from sticker_selector import StickerSelectorClient
-from ui_theme import FONT_MONO, FONT_UI, apply_window_icon, ttk
+from storage.config import AppConfig
+from storage.persona_store import PersonaStore
+from storage.settings_store import SettingsStore
+from features.sticker_selector import StickerSelectorClient
+from windows.ui_theme import FONT_MONO, FONT_UI, apply_window_icon, ttk
 import json
-from llm_client import resolve_env, MockLLMClient, OpenAIClient
+from core.llm_client import resolve_env, MockLLMClient, OpenAIClient
 
 
 class SettingsWindow(tk.Toplevel):

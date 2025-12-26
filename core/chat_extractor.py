@@ -4,7 +4,7 @@ import re
 import time
 from typing import List, Optional
 import uiautomation as auto
-from models import ExtractedMessage
+from core.models import ExtractedMessage
 
 TIME_HHMM = re.compile(r"^\d{1,2}:\d{2}$")
 

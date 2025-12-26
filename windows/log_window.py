@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import tkinter as tk
 
-from ui_theme import (
+from windows.ui_theme import (
     DARK_TEXT_BG,
     DARK_TEXT_FG,
     DARK_TEXT_INSERT,

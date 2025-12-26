@@ -13,15 +13,15 @@ import struct
 from collections import deque
 import uiautomation as auto
 
-from config import AppConfig
-from models import BoundControl, ExtractedMessage
-from uia_picker import reacquire
-from chat_extractor import extract_messages
-from history_store import HistoryStore
-from uia_actions import try_input_text, try_click_button
-from llm_client import BaseLLMClient
-from persona_store import PersonaStore
-from sticker_selector import StickerSelectorClient
+from storage.config import AppConfig
+from core.models import BoundControl, ExtractedMessage
+from uia.uia_picker import reacquire
+from core.chat_extractor import extract_messages
+from storage.history_store import HistoryStore
+from uia.uia_actions import try_input_text, try_click_button
+from core.llm_client import BaseLLMClient
+from storage.persona_store import PersonaStore
+from features.sticker_selector import StickerSelectorClient
 
 
 class BotEngine:
