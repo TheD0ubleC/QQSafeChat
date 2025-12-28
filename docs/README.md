@@ -34,7 +34,7 @@
 
 首先只支持 qq9.0 以上
 
-### StickerSelector 项目部署、使用方式请去[项目仓库](https://github.com/TheD0ubleC/StickerSelector/)。
+### StickerSelector 项目部署、使用方式请去[项目仓库](https://github.com/TheD0ubleC/StickerSelector/)。但目前QQSafeChat还没支持新版StickerSelector 先别使用
 
 ### 非常重要的事情：
 
