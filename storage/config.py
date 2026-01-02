@@ -64,7 +64,7 @@ class AppConfig:
     sticker_selector_random: bool = False
     sticker_selector_series: str = ""
     sticker_selector_order: str = "desc"
-    sticker_selector_embed_raw_min: float = 0.0
+    sticker_selector_embed_raw_min: float = 0.5
 
     
     persona_dir: str = "personas"

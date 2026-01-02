@@ -698,7 +698,7 @@ class App:
         if not current:
             return
         if not messagebox.askyesno(
-            "删除确认", f"确定删除历史 {current} 吗？", parent=self.root
+            "删除确认", f"确定删除历史 {current} 吗？这是你与那个虚拟的TA的回忆。", parent=self.root
         ):
             return
         if self.history.delete(current):

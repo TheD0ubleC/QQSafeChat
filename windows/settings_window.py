@@ -17,7 +17,8 @@ class SettingsWindow(tk.Toplevel):
         super().__init__(master)
         apply_window_icon(self)
         self.title("设置")
-        self.geometry("860x950")
+        self._apply_dpi_scaling()
+        self._set_initial_geometry()
         self.resizable(True, True)
         self.protocol("WM_DELETE_WINDOW", self._on_close)
 
@@ -33,9 +34,11 @@ class SettingsWindow(tk.Toplevel):
 
         root = ttk.Frame(self, padding=12)
         root.pack(fill="both", expand=True)
+        root.columnconfigure(0, weight=1)
+        root.rowconfigure(0, weight=1)
 
         nb = ttk.Notebook(root)
-        nb.pack(fill="both", expand=True)
+        nb.grid(row=0, column=0, sticky="nsew")
         self.nb = nb
 
         self.tab_llm = ttk.Frame(nb, padding=10)
@@ -55,12 +58,44 @@ class SettingsWindow(tk.Toplevel):
 
         nb.bind("<<NotebookTabChanged>>", self._on_tab_changed)
 
-        bottom = ttk.Frame(root)
-        bottom.pack(fill="x", pady=(10, 0))
-        ttk.Button(bottom, text="保存并应用", command=self.save_apply).pack(side="left")
-        ttk.Button(bottom, text="取消", command=self._on_close).pack(
-            side="left", padx=8
+        side = ttk.Frame(root)
+        side.grid(row=0, column=1, sticky="ns", padx=(12, 0))
+        side.columnconfigure(0, weight=1)
+        ttk.Button(side, text="保存并应用", command=self.save_apply).grid(
+            row=0, column=0, sticky="ew"
         )
+        ttk.Button(side, text="取消", command=self._on_close).grid(
+            row=1, column=0, sticky="ew", pady=(8, 0)
+        )
+
+    def _apply_dpi_scaling(self):
+        try:
+            pixels_per_inch = self.winfo_fpixels("1i")
+            scaling = pixels_per_inch / 72.0
+            scaling = max(0.8, min(2.5, scaling))
+            current = float(self.tk.call("tk", "scaling"))
+            if abs(current - scaling) > 0.1:
+                self.tk.call("tk", "scaling", scaling)
+        except Exception:  # noqa: BLE001
+            pass
+
+    def _set_initial_geometry(self):
+        self.update_idletasks()
+        screen_w = self.winfo_screenwidth()
+        screen_h = self.winfo_screenheight()
+        width = min(1280, int(screen_w * 0.9))
+        height = min(820, int(screen_h * 0.85))
+        if width < 900:
+            width = min(900, screen_w)
+        if height < 600:
+            height = min(600, screen_h)
+        if width < height:
+            width = min(screen_w, max(width, int(height * 1.2)))
+        self.geometry(f"{width}x{height}")
+        try:
+            self.minsize(820, 560)
+        except Exception:  # noqa: BLE001
+            pass
 
     def _build_llm_tab(self):
         frm = self.tab_llm
