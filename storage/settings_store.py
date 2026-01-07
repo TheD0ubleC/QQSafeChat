@@ -8,7 +8,7 @@ from typing import Optional
 
 @dataclass
 class OpenAISettings:
-    provider: str = "mock"  # 可选值: mock, openai, siliconflow
+    provider: str = "openai"  # 可选值: mock, openai, siliconflow
     api_key: str = "$OPENAI_API_KEY"
     base_url: str = "https://api.openai.com/v1"
     model: str = "gpt-4.1-mini"

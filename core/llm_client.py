@@ -300,7 +300,7 @@ class OpenAIClient(BaseLLMClient):
                     headers={"Authorization": f"Bearer {api_key_real}", "Content-Type": "application/json"},
                     method="POST",
                 )
-                with urllib.request.urlopen(req_u, time_out) as resp:
+                with urllib.request.urlopen(req_u, timeout=time_out) as resp:
                     data = json.loads(resp.read().decode("utf-8"))
 
                 raw = (data.get("choices", [{}])[0].get("message", {}).get("content") or "")
@@ -512,7 +512,7 @@ class SiliconFlowClient(BaseLLMClient):
                     headers={"Authorization": f"Bearer {api_key_real}", "Content-Type": "application/json"},
                     method="POST",
                 )
-                with urllib.request.urlopen(req_u, time_out) as resp:
+                with urllib.request.urlopen(req_u, timeout=time_out) as resp:
                     data = json.loads(resp.read().decode("utf-8"))
 
                 raw = (data.get("choices", [{}])[0].get("message", {}).get("content") or "")
